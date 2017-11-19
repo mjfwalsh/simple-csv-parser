@@ -60,27 +60,3 @@ function csv2json(csvData) {
 
 	return resultHash;
 }
-
-
-var spectrum = require('csv-spectrum')
-spectrum(function(err, data) {
-
-	for(var h=0; h<data.length; h++) {
-		process.stdout.write('testing ' + data[h].name + ' ');
-
-		var myParser = csv2json(data[h].csv.toString('utf8'));
-		var theirParser = JSON.parse(data[h].json);
-
-		if(JSON.stringify(myParser) == JSON.stringify(theirParser)) {
-			console.log('equal')
-		} else {
-			console.log(data[h].csv.toString('utf8'));
-			console.log(myParser);
-			console.log(theirParser);
-
-			console.log('not equal')
-			break;
-		}
-
-	}
-});
