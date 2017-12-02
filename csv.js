@@ -30,7 +30,7 @@ function csv2json(csvData) {
 	var resultArr = [];
 	var csvLine;
 	while(csvLine = csvLines.shift()) {
-		// skip comments and header string
+		// skip comments and blank lines
 		if(csvLine.match(/^ *#/) || csvLine == '') {
 			continue;
 		} else {
@@ -45,7 +45,7 @@ function csv2json(csvData) {
 		}
 	}
 
-	// first row is headers
+	// first row is header
 	var keys = resultArr.shift();
 
 	var resultHash = [];
